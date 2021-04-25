@@ -6,7 +6,15 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
-  }
+  },
+  {
+    path: 'clients',
+    loadChildren: () => import('../clients/clients.module').then( m => m.ClientsPageModule)
+  },
+  {
+    path: 'products',
+    loadChildren: () => import('../products/products.module').then( m => m.ProductsPageModule)
+  },
 ];
 
 @NgModule({
