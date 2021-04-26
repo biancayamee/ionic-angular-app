@@ -42,22 +42,22 @@ export class ClientFormsComponent implements OnInit {
   saveNewClient() {
     this.clientsService.saveClient(this.registerForm.value.name, this.registerForm.value.cpf, this.registerForm.value.email, this.registerForm.value.gender)
       .toPromise()
-      .then((res) => {
+      .then(() => {
         this.clientsService.emitUpdateClientList();
         this.presentToast('Cliente cadastrado com sucesso.');
       },
-        (err) => this.presentToast('Ocorreu um erro ao cadastrar o cliente, tente novamente mais tarde.'));
+        () => this.presentToast('Ocorreu um erro ao cadastrar o cliente, tente novamente mais tarde.'));
   }
 
   updateRegisteredClient() {
     this.clientsService.updateClientById(this.registeredClient.id, this.registerForm.value.name, this.registerForm.value.cpf, this.registerForm.value.email, this.registerForm.value.gender)
       .toPromise()
-      .then((res) => {
+      .then(() => {
         this.clientsService.emitUpdateClientList();
         this.presentToast('Cliente atualizado com sucesso.');
         this.closeModal();
       },
-        (err) => this.presentToast('Ocorreu um erro ao atualizar o cliente, tente novamente mais tarde.'));
+        () => this.presentToast('Ocorreu um erro ao atualizar o cliente, tente novamente mais tarde.'));
 
   }
 

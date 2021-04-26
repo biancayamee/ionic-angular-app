@@ -37,7 +37,7 @@ export class ClientsPage implements OnInit {
   async getClientsList() {
     this.clientsService.getClients()
       .toPromise()
-      .then((res) => this.clientsList = res);
+      .then((res: Client[]) => this.clientsList = res);
   }
 
   deleteClient(id: string) {

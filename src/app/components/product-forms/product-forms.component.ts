@@ -44,22 +44,22 @@ export class ProductFormsComponent implements OnInit {
     console.log(this.registerForm.value);
     this.productsService.saveProduct(this.registerForm.value.name, this.registerForm.value.manufacturing, this.registerForm.value.size, this.registerForm.value.price)
       .toPromise()
-      .then((res) => {
+      .then(() => {
         this.productsService.emitUpdateProductList();
         this.presentToast('Produto cadastrado com sucesso.');
       },
-        (err) => this.presentToast('Ocorreu um erro ao cadastrar o produto, tente novamente mais tarde.'));
+        () => this.presentToast('Ocorreu um erro ao cadastrar o produto, tente novamente mais tarde.'));
   }
 
   updateRegisteredProduct() {
     this.productsService.updateProductById(this.registeredProduct.id, this.registerForm.value.name, this.registerForm.value.manufacturing, this.registerForm.value.size, this.registerForm.value.price)
       .toPromise()
-      .then((res) => {
+      .then(() => {
         this.productsService.emitUpdateProductList();
         this.presentToast('Produto atualizado com sucesso.');
         this.closeModal();
       },
-        (err) => this.presentToast('Ocorreu um erro ao atualizar o produto, tente novamente mais tarde.'));
+        () => this.presentToast('Ocorreu um erro ao atualizar o produto, tente novamente mais tarde.'));
 
   }
 
