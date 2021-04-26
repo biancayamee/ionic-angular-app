@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true">
+  <div class="div-close-modal">
+    <ion-button color="dark" size="small" class="ion-no-padding" (click)="closeModal()" fill="clear" shape="round"
+      slot="end">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-button>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <ion-item class="ion-no-padding">
+      <ion-label position="stacked"> Nome </ion-label>
+      <ion-input class="input" formControlName="name"></ion-input>
+    </ion-item>
+    <span class="error-msg" *ngIf="name.errors?.required && (name.dirty || name.touched)">Campo obrigatório.</span>
+
+    <ion-item class="ion-no-padding">
+      <ion-label position="stacked"> Fabricação </ion-label>
+      <ion-input class="input" formControlName="manufacturing"></ion-input>
+    </ion-item>
+    <span class="error-msg"
+      *ngIf="manufacturing.errors?.required && (manufacturing.dirty || manufacturing.touched)">Campo obrigatório.</span>
+
+    <ion-item class="ion-no-padding">
+      <ion-label position="stacked"> Tamanho </ion-label>
+      <ion-input class="input" formControlName="size"></ion-input>
+    </ion-item>
+    <span class="error-msg" *ngIf="size.errors?.required && (size.dirty || size.touched)">Campo
+      obrigatório.</span>
+
+    <ion-item class="ion-no-padding">
+      <ion-label position="stacked"> Valor </ion-label>
+      <ion-input class="input" formControlName="price"></ion-input>
+    </ion-item>
+    <span class="error-msg" *ngIf="price.errors?.required && (price.dirty || price.touched)">Campo
+      obrigatório.</span>
+    <div class="div-btn">
+      <ion-button color="dark" [disabled]="registerForm.invalid" shape="round" type="submit" class="large">
+        <span>{{ creatingNewProduct ? 'Cadastrar' : 'Salvar alterações' }}</span>
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

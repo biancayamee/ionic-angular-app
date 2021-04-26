@@ -5,10 +5,27 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div>
-    <ion-list>
-      <ion-item>item 1</ion-item>
-      <ion-item>item 2</ion-item>
-    </ion-list>
+  <ion-refresher slot="fixed" (ionRefresh)="refreshProductsList($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="productsList.length === 0" class="empty-products-list">Não há produtos cadastrados.</div>
+
+  <div *ngIf="productsList.length !== 0" class="div-list">
+    <ion-item class="ion-no-padding" *ngFor="let product of productsList">
+      <ion-label>{{ product.name }}</ion-label>
+      <ion-button (click)="editProduct(product)" fill="clear" color="dark" shape="round" slot="end">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="deleteProduct(product.id)" fill="clear" color="dark" shape="round" slot="end">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark" (click)="presentNewProductModal()">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
