@@ -1,0 +1,23 @@
+.div-close-modal {
+    text-align: end;
+    padding-right: 16px;
+    ion-button {
+        margin-top: 16px;
+    }
+}
+form {
+    padding: 16px;
+    ion-item {
+        margin-top: 8px;
+    }
+
+    .error-msg {
+        font-size: 13px;
+        color: rgb(122, 9, 9);
+    }
+
+    .div-btn {
+        margin-top: 16px;
+        text-align: center;
+    }
+}

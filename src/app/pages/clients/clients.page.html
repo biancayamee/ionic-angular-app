@@ -5,10 +5,27 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div>
-    <ion-list>
-      <ion-item>item 1</ion-item>
-      <ion-item>item 2</ion-item>
-    </ion-list>
+  <ion-refresher slot="fixed" (ionRefresh)="refreshClientsList($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="clientsList.length === 0" class="empty-clients-list">Não há clientes cadastrados.</div>
+
+  <div *ngIf="clientsList.length !== 0" class="div-list">
+    <ion-item class="ion-no-padding" *ngFor="let client of clientsList">
+      <ion-label>{{ client.name }}</ion-label>
+      <ion-button (click)="editClient(client)" fill="clear" color="dark" shape="round" slot="end">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="deleteClient(client.id)" fill="clear" color="dark" shape="round" slot="end">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark" (click)="presentNewClientModal()">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
