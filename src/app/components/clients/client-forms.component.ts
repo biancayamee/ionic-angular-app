@@ -5,11 +5,11 @@ import { Client } from 'src/app/models/Client';
 import { ModalController, ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-new-client',
-  templateUrl: './new-client.component.html',
-  styleUrls: ['./new-client.component.scss'],
+  selector: 'app-client-forms',
+  templateUrl: './client-forms.component.html',
+  styleUrls: ['./client-forms.component.scss'],
 })
-export class NewClientComponent implements OnInit {
+export class ClientFormsComponent implements OnInit {
   public creatingNewClient: boolean;
   public registerForm: FormGroup;
   private client: Client;

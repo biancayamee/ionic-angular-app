@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
-import { NewClientComponent } from 'src/app/components/clients/new-client/new-client.component';
+import { ClientFormsComponent } from 'src/app/components/clients/client-forms.component';
 import { Client } from 'src/app/models/Client';
 import { ClientsService } from 'src/app/services/clients.service';
 
@@ -53,7 +53,7 @@ export class ClientsPage implements OnInit {
 
   async editClient(client: Client) {
     const modal = await this.modalCtrl.create({
-      component: NewClientComponent,
+      component: ClientFormsComponent,
       componentProps: { registeredClient: client }
     });
     modal.present();
@@ -61,7 +61,7 @@ export class ClientsPage implements OnInit {
 
   async presentNewClientModal() {
     const modal = await this.modalCtrl.create({
-      component: NewClientComponent
+      component: ClientFormsComponent
     });
     return await modal.present();
   }
